@@ -29,7 +29,7 @@ int binaryToDecimal(string s)
         int base = 1;
         // cout<<
         int len = binString.length();
-        cout << binString[0] << " lllll " << endl;
+        // cout << binString[0] << " lllll " << endl;
         if (binString[0] == '0')
         {
             signedInt = UnsignedBinaryToDecimal(s);
@@ -37,7 +37,7 @@ int binaryToDecimal(string s)
 
         else
         {
-            cout << "IMM CH" << endl;
+            // cout << "IMM CH" << endl;
             int i = -1;
             for (i = len - 1; i >= 0; i--)
                 if (binString[i] == '1')
@@ -209,7 +209,7 @@ public:
     void TakeInstructionsToMap()
     {
         fstream fileIns;
-        fileIns.open("input.txt", ios::in);
+        fileIns.open("sample.txt", ios::in);
         if (fileIns.is_open())
         { // checking whether the file is open
             string line;
@@ -224,6 +224,7 @@ public:
                 int i = 0;
                 if (line == "end")
                 {
+                    // cout<<"Program Terminated";
                     return;
                 }
                 else
@@ -352,12 +353,12 @@ public:
             if (MuxINC_select == 0)
             {
                 numIns = numIns + 4;
-                cout << "2 " << endl;
+                // cout << "2 " << endl;
             }
             else
             {
                 numIns = numIns + (immediate);
-                cout << "immediate" << endl;
+                // cout << "immediate" << endl;
             }
         }
         // cout<<"Final "<<numIns<<endl;
@@ -379,13 +380,13 @@ public:
         // int n;
         // ss >> n;
         // bitset<32> b(n);
-        cout<<s<<"gg"<<endl;
+        // cout<<s<<"gg"<<endl;
         string hexs=s;
         string full = HexToBin(hexs);
-        cout << full << endl;
+        // cout << full << endl;
         string opcodeString = full.substr(25, 7);
         int opcode = binaryToDecimal(opcodeString);
-        cout << opcodeString << " " << opcode << endl;
+        // cout << opcodeString << " " << opcode << endl;
 
         if (opcode == 51)
         {
@@ -472,10 +473,10 @@ public:
             string rs2String = full.substr(7, 5);
             int rs2 = binaryToDecimal(rs2String);
             string imm2String = full.substr(1, 6);
-            cout<<imm2String<<" "<<imm1String<<endl;
+            // cout<<imm2String<<" "<<imm1String<<endl;
             string immString = full[0] + imm2String + imm1String+"0";
             int imm = binaryToDecimal(immString);
-            cout << immString << " ff f " << imm << endl;
+            // cout << immString << " ff f " << imm << endl;
             Parameters.push_back(opcode);
             Parameters.push_back(imm);
             Parameters.push_back(func3);
@@ -578,11 +579,11 @@ public:
 
         if (Parameters.front() == -29)
         {
-            cout << Parameters[0] << endl;
-            cout << Parameters[1] << endl;
-            cout << Parameters[2] << endl;
-            cout << Parameters[3] << endl;
-            cout << Parameters[4] << endl;
+            // cout << Parameters[0] << endl;
+            // cout << Parameters[1] << endl;
+            // cout << Parameters[2] << endl;
+            // cout << Parameters[3] << endl;
+            // cout << Parameters[4] << endl;
             rs2 = Parameters.back();
             Parameters.pop_back();
             rs1 = Parameters.back();
@@ -590,11 +591,11 @@ public:
             func3 = Parameters.back();
             Parameters.pop_back();
             immediate = Parameters.back();
-            cout << immediate << "   lkjj" << endl;
+            // cout << immediate << "   lkjj" << endl;
             Parameters.pop_back();
             opcode = Parameters.back();
             Parameters.pop_back();
-            cout << opcode << endl;
+            // cout << opcode << endl;
         }
 
         if (Parameters.front() == 55)
@@ -943,9 +944,9 @@ public:
         {
             printf("invalid opcode\n");
         }
-        cout << ALU_Operation << " " << RB << endl;
+        // cout << ALU_Operation << " " << RB << endl;
         ControlSig = Execute_instructions(ControlSig, ALU_Operation, RA, RB);
-        cout << ControlSig[6] << endl;
+        // cout << ControlSig[6] << endl;
         return ControlSig;
     }
 
@@ -1190,7 +1191,7 @@ int main()
     i1.PrintMap();
     Simulator s;
     int i = 0;
-    while (i < 60)
+    while (i < 160)
     {
         cout << endl;
         cout << "-----------------------------CLOCK " << i << "-------------------------------------" << endl;
